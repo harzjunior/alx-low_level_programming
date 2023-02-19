@@ -26,7 +26,6 @@ while (k <= 9)
 putchar(i + '0');
 putchar(j + '0');
 putchar(k + '0');
-
 if (i < 7)
 {
 putchar(',');
@@ -40,8 +39,6 @@ k = j + 1;
 i++;
 j = i + 1;
 k = j + 1;
-
 putchar('\n');
 return (0);
-
 }
