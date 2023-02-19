@@ -5,15 +5,14 @@
  *   * You are not allowed to use any variable of type char
  *    * You can only use the putchar function
  *     * Return: 0
- *      */
+ */
 
 int main(void)
 {
-int n = 48;
-while (n <= 57)
+int n;
+for (i = 0; i < 10; i++)
 {
-putchar(n);
-n += 1;
+putchar(i + '0');
 }
 printf("\n");
 return (0);
