@@ -37,7 +37,7 @@ n2 += 1;
 }
 n1 += 1;
 }
-putchar('\n');
+putchar(10);
 return (0);
 }
 					
