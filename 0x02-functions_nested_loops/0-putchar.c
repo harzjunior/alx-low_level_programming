@@ -1,5 +1,10 @@
 include "main.h"
 
+/**
+ * main Entry point
+ * return always 0
+ */
+
 void main(void)
 {
 _putchar('_');
