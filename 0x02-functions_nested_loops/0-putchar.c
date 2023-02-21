@@ -1,6 +1,6 @@
 include "main.h"
 
-void print_putchar(void)
+void main(void)
 {
 _putchar('_');
 _putchar('p');
