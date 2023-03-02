@@ -6,25 +6,15 @@
 */
 void print_number(int n)
 {
-int digits = 1;
-int divisor = 1;
-int i, digit;
+unsigned int val = n;
 
 if (n < 0)
 {
 _putchar('-');
-n = -n;
+val = -val;
 }
-while (n / divisor >= 10)
-{
-digits++;
-divisor *= 10;
-}
-for (i = 0; i < digits; i++)
-{
-digit = (n / divisor) % 10;
-_putchar(digit + '0');
-divisor /= 10;
-}
-_putchar(n % 10 + '0');
+
+if ((val / 10) > 0)
+print_number(val / 10);
+_putchar((val % 10) + '0');
 }
