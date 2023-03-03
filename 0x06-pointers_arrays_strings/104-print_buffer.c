@@ -32,7 +32,6 @@ else
 {
 printf("  ");
 }
-
 if (j % 2 == 1)
 {
 printf(" ");
@@ -49,7 +48,9 @@ putchar(c);
 else{
 putchar('.');
 }
+
 }
 printf("\n");
 }
+
 }
