@@ -26,7 +26,6 @@ printf("0x%02x", buffer[i]);
 i++;
 printf("\n");
 }
-
 /**
 *main - check the code
 *Return: Always 0.
