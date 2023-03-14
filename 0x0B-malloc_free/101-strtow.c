@@ -35,7 +35,7 @@ return count;
 */
 char **strtow(char *str)
 {
-int i, j, k;
+int i, k;
 char **words;
 int word_count = 0, word_len = 0;
 
@@ -47,9 +47,9 @@ word_count = count_words(str);
 words = malloc(sizeof(char *) * (word_count + 1));
 if (words == NULL)
 {
-return NULL;
+return (NULL);
 }
-for (i = 0, j = 0; i < word_count; i++)
+for (i = 0; i < word_count; i++)
 {
 while (*str == ' ')
 {
