@@ -35,7 +35,7 @@ return count;
 */
 char **strtow(char *str)
 {
-int i, k;
+int i, j, k;
 char **words;
 int word_count = 0, word_len = 0;
 
