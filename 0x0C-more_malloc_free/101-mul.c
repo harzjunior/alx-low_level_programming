@@ -1,99 +1,89 @@
-#include <stdlib.h>
 #include <stdio.h>
-#include "main.h"
+#include <stdlib.h>
 
 /**
- * is_digit - checks if a string contains a non-digit char
- * @s: string to be evaluated
+ * _isdigit - Checks if a character is a digit.
+ * @c: The character to check.
  *
- * Return: 0 if a non-digit is found, 1 otherwise
+ * Return: 1 if the character is a digit, 0 otherwise.
  */
-int is_digit(char *s)
+int _isdigit(int c)
 {
-	int i = 0;
-
-	while (s[i])
-	{
-		if (s[i] < '0' || s[i] > '9')
-			return (0);
-		i++;
-	}
-	return (1);
+    return (c >= '0' && c <= '9');
 }
 
 /**
- * _strlen - returns the length of a string
- * @s: string to evaluate
+ * _strlen - Computes the length of a string.
+ * @s: The string to process.
  *
- * Return: the length of the string
+ * Return: The length of the string.
  */
-int _strlen(char *s)
+size_t _strlen(const char *s)
 {
-	int i = 0;
+    size_t len = 0;
 
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
+    while (*s++)
+        len++;
+
+    return (len);
 }
 
 /**
- * errors - handles errors for main
- */
-void errors(void)
-{
-	printf("Error\n");
-	exit(98);
-}
-
-/**
- * main - multiplies two positive numbers
- * @argc: number of arguments
- * @argv: array of arguments
+ * _atoi - Converts a string to an integer.
+ * @s: The string to convert.
  *
- * Return: always 0 (Success)
+ * Return: The integer value.
  */
-int main(int argc, char *argv[])
+int _atoi(const char *s)
 {
-	char *s1, *s2;
-	int len1, len2, len, i, carry, digit1, digit2, *result, a = 0;
+    int sign = 1;
+    int value = 0;
 
-	s1 = argv[1], s2 = argv[2];
-	if (argc != 3 || !is_digit(s1) || !is_digit(s2))
-		errors();
-	len1 = _strlen(s1);
-	len2 = _strlen(s2);
-	len = len1 + len2 + 1;
-	result = malloc(sizeof(int) * len);
-	if (!result)
-		return (1);
-	for (i = 0; i <= len1 + len2; i++)
-		result[i] = 0;
-	for (len1 = len1 - 1; len1 >= 0; len1--)
-	{
-		digit1 = s1[len1] - '0';
-		carry = 0;
-		for (len2 = _strlen(s2) - 1; len2 >= 0; len2--)
-		{
-			digit2 = s2[len2] - '0';
-			carry += result[len1 + len2 + 1] + (digit1 * digit2);
-			result[len1 + len2 + 1] = carry % 10;
-			carry /= 10;
-		}
-		if (carry > 0)
-			result[len1 + len2 + 1] += carry;
-	}
-	for (i = 0; i < len - 1; i++)
-	{
-		if (result[i])
-			a = 1;
-		if (a)
-			_putchar(result[i] + '0');
-	}
-	if (!a)
-		_putchar('0');
-	_putchar('\n');
-	free(result);
-	return (0);
+    if (*s == '-')
+    {
+        sign = -1;
+        s++;
+    }
+
+    while (_isdigit(*s))
+    {
+        value = value * 10 + (*s - '0');
+        s++;
+    }
+
+    return (sign * value);
 }
+
+/**
+ * print_error - Prints an error message and exits.
+ */
+void print_error(void)
+{
+    printf("Error\n");
+    exit(98);
+}
+
+/**
+ * main - Multiplies two positive numbers.
+ * @argc: The number of command-line arguments.
+ * @argv: The command-line arguments.
+ *
+ * Return: 0 on success, 98 on failure.
+ */
+int main(int argc, char **argv)
+{
+    int num1, num2, result;
+
+    if (argc != 3 || !_isdigit(*argv[1]) || !_isdigit(*argv[2]))
+        print_error();
+
+    num1 = _atoi(argv[1]);
+    num2 = _atoi(argv[2]);
+
+    result = num1 * num2;
+
+    printf("%d\n", result);
+
+    return (0);
+}
+
