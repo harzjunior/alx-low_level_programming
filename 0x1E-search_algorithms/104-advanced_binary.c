@@ -1,4 +1,4 @@
-#include <stddef.h>
+#include "search_algos.h"
 
 /**
  * rec_search - Conducts a binary search for a value in an array of integers.
